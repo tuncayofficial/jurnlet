@@ -29,7 +29,7 @@ export default function LibraryVisual() {
                     <span className={fontSizeClass}>{displayWord.toUpperCase()}</span>
                 </div>
             </div>
-            <h2 className="text-black font-extrabold text-3xl mb-8">Pronunciation</h2>
+            <h2 className="text-black font-extrabold text-3xl mb-8 uppercase">Pronunciation</h2>
             <div className="flex flex-row m-2 justify-center items-center">
                 <LibraryPlayerUK />
                 <LibraryPlayerUS />

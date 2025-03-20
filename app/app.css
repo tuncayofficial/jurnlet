@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,700;1,100;1,500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,5 +14,29 @@ body {
           background-color: white;
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .animate-typing {
+    animation: typing 3s steps(22) 1s infinite, blink 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
   }
 }
