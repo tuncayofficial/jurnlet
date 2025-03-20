@@ -9,12 +9,22 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@react-router/node": "^7.3.0",
     "@react-router/serve": "^7.3.0",
+    "axios": "^1.8.3",
+    "camb-dict": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "firebase": "^11.4.0",
+    "firebase-tools": "^13.34.0",
+    "framer-motion": "^12.5.0",
     "isbot": "^5.1.17",
+    "lottie-react": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.3.0"
+    "react-router": "^7.3.0",
+    "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
     "@react-router/dev": "^7.3.0",
@@ -27,5 +37,11 @@
     "typescript": "^5.7.2",
     "vite": "^5.4.11",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "version": "1.0.0",
+  "description": "A modern, production-ready template for building full-stack React applications using React Router.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
