@@ -39,7 +39,7 @@ export function Welcome() {
         />
 
         {/* Headline */}
-        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight ">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight ">
           <div className="">
             <span className="text-indigo-700">Discipline</span> <span className="text-green-700">immerse</span> <span className="text-amber-800">communicate</span>
           </div>
@@ -68,11 +68,11 @@ export function Welcome() {
       </div>
     </section>
     <section>
-      <div className="flex flex-col md:flex-row justify-between items-center">
-        <div className="block relative px-6 m-auto w-200 h-200 right-50 top-40">
+      <div className="flex flex-col h-screen md:flex-row justify-between items-center ">
+        <div className="hidden md:block relative px-6 m-auto right-60">
           <img src = {HeroImage} />
         </div>
-        <div className="w-100 h-80 bg-gray-200 rounded-xl mx-4 p-6 shadow-xl perspective-dramatic">
+        <div className="w-100 h-80 m-auto bg-gray-200 rounded-xl mx-4 p-6 shadow-xl perspective-dramatic">
           <h1 className="w-full font-extrabold text-3xl text-black text-center mt-20">Get started with our enhanced dictionary.</h1>
           <button onClick={onGoogleSignIn} className="font-semibold text-indigo-500 text-xl absolute right-0 cursor-pointer bottom-0 pb-2 m-12
                           after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-indigo-500 

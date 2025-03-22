@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa6";
 
 const NavbarMobile: React.FC = () => {
     return (
-      <nav className="fixed border-t-1 rounded-t-2xl border-gray-800 bottom-0 left-0 w-full bg-gray-800 text-white shadow-2xl shadow-blue-800 md:hidden">
+      <nav className="fixed border-t-1 rounded-t-2xl border-gray-800 bottom-0 left-0 w-full bg-gray-800 text-white shadow-2xl shadow-blue-800 z-10 md:hidden">
         <div className="flex justify-around items-center py-2 px-4 sm:px-6 md:px-8">
           {/* Home Tab */}
           <button type='button'>
