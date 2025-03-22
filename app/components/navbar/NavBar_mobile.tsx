@@ -19,7 +19,7 @@ const NavbarMobile: React.FC = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full bg-gray-800 text-white shadow-xl z-10 md:hidden rounded-t-2xl">
+    <nav className="fixed bottom-0 left-0 w-full bg-gray-800 text-white shadow-xl z-50 md:hidden rounded-t-2xl">
       <div className="flex justify-around items-center py-2 px-4 sm:px-6 md:px-8">
         {/* Home Tab */}
         <button

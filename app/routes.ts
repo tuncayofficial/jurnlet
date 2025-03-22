@@ -5,5 +5,7 @@ export default [
     index("routes/home.tsx"),
     route('/library/:word', "routes/Library.tsx"),
     route('/library', "routes/LibrarySearcher.tsx"),
-    route('/404_not_found', "routes/SearchError.tsx")
+    route('/404_not_found', "routes/SearchError.tsx"),
+    route('/signup', "routes/Signup.tsx"),
+    route('/login', "routes/Login.tsx")
 ] satisfies RouteConfig;
