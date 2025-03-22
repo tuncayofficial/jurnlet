@@ -19,7 +19,7 @@ export default function LibraryDefinition() {
     useEffect(() => {
         const fetchDefinition = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/definition/${word}`);
+                const response = await axios.get(`/api/definition?word=${word}`);
                 const data = response.data.limitedDefinitions
 
                 if(Array.isArray(data) && data.length > 0){
