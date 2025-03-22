@@ -1,9 +1,10 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, useRef, Suspense } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
-import LoaderWatch from "../../../assets/lottie/Animation - 1742464304885.json";
-import Notebook from "../../../assets/lottie/Notebook.json";
+import LoaderWatch from "../../assets/lottie/Animation - 1742464304885.json";
+import Notebook from "../../assets/lottie/Notebook.json";
 import { motion } from "framer-motion";
+import type { LottieComponentProps, LottieRefCurrentProps} from "lottie-react";
 
 const Lottie = lazy(() => import("lottie-react"));
 
@@ -11,6 +12,7 @@ const Lottie = lazy(() => import("lottie-react"));
 export default function LibraryDefinition() {
     const [definitions, setDefinitions] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(true)
+    const notebookRef = useRef<LottieRefCurrentProps | null>(null);
 
     const { word } = useParams()
 
@@ -37,12 +39,14 @@ export default function LibraryDefinition() {
 
     return (
     <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-800 shadow-md">
-        <div className="hidden sm:block w-60 h-60 absolute top-1 left-240">
+        <div className="hidden sm:block w-60 h-60 absolute top-16 left-240 cursor-pointer">
             <Suspense fallback={<p className="text-white">Loading animation...</p>}>
-                <Lottie animationData={Notebook} loop={true}/>
+                <Lottie onComplete={()=>{
+                    notebookRef.current?.goToAndPlay(45, true)
+                }} lottieRef={notebookRef} animationData={Notebook} loop={false}/>
             </Suspense>
         </div>
-    <h1 className="font-extrabold text-4xl text-white mb-8 -mt-6">{ word?.toUpperCase() }</h1>
+    <h1 className="font-extrabold text-4xl text-white mb-8 -mt-2">{ word?.toUpperCase() }</h1>
     <ul className="flex flex-col justify-center items-center w-full max-w-md">
         {loading ?  (
                     <Suspense fallback={<p className="text-white">Loading animation...</p>}>

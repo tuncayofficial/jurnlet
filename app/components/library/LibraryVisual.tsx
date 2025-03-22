@@ -5,7 +5,7 @@ import axios from "axios";
 import LibraryPlayerUK from "./LibraryPlayerUK";
 import LibraryPlayerUS from "./LibraryPlayerUS";
 
-import Notebook from "../../../assets/lottie/Notebook.json"
+import Notebook from "../../assets/lottie/Notebook.json"
 const Lottie = lazy(() => import("lottie-react"));
 
 
@@ -30,7 +30,7 @@ export default function LibraryVisual() {
                 </div>
             </div>
             <h2 className="text-black font-extrabold text-3xl mb-8 uppercase">Pronunciation</h2>
-            <div className="flex flex-row m-2 justify-center items-center">
+            <div className="flex flex-row m-2 justify-center items-center sm:m-2">
                 <LibraryPlayerUK />
                 <LibraryPlayerUS />
             </div>

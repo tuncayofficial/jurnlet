@@ -37,6 +37,8 @@ import { audio } from "framer-motion/client";
         
         const result:string = findUK(audioLink) || "No pronunciation found."
 
+        console.log(result === "No pronunciation found.")
+
         const togglePlayPause = () => {
             if (audioRef.current) {
                 if (isPlaying) {
@@ -79,8 +81,8 @@ import { audio } from "framer-motion/client";
                     {/* Play/Pause Button */}
                     <button
                         onClick={togglePlayPause}
-                        className="p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none"
-                    >   
+                        className={`p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none ${result === "No pronunciation found." ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}`}
+                    >
                         {isPlaying ? (
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +149,7 @@ import { audio } from "framer-motion/client";
                     </div>
                 </div>
 
-                {/* Progress Bar */}
+                {/* Progress Bar 
                 <div className="w-full mt-4">
                     <input
                         type="range"
@@ -157,7 +159,7 @@ import { audio } from "framer-motion/client";
                         className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
                     />
                 </div>
-
+                        */}
                 {/* Hidden Audio Element */}
                 <audio ref={audioRef} src={result} />
             </div>

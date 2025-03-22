@@ -72,15 +72,14 @@ export default function LibraryPlayerUS() {
     }, []);
 
     return (
-        <div className="flex flex-col mx-6 items-center justify-center p-6 bg-gray-100 rounded-lg shadow-md">
+        <div className="flex flex-col p-6 mx-6 items-center justify-center bg-gray-100 rounded-lg shadow-md">
             {/* Audio Player Controls */}
             <span className="bg-indigo-500 font-bold rounded-3xl my-2 mb-10 p-2 px-5 uppercase">American</span>
             <div className="flex items-center space-x-4">
                 {/* Play/Pause Button */}
                 <button
                     onClick={togglePlayPause}
-                    className="p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none"
-                >
+                        className={`p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none ${result === "No pronunciation found." ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}`}                >
                     {isPlaying ? (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +146,7 @@ export default function LibraryPlayerUS() {
                 </div>
             </div>
 
-            {/* Progress Bar */}
+            {/* Progress Bar 
             <div className="w-full mt-4">
                 <input
                     type="range"
@@ -157,7 +156,7 @@ export default function LibraryPlayerUS() {
                     className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
                 />
             </div>
-
+                */}
             {/* Hidden Audio Element */}
             <audio ref={audioRef} src={result} />
         </div>

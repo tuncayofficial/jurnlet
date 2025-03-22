@@ -1,7 +1,7 @@
 import { useState, useRef, lazy, Suspense } from "react";
 import LibraryDefinition from "./LibraryDefinition"
 import LibraryVisual from "./LibraryVisual"
-import Notebook from "../../../assets/lottie/Notebook.json"
+import Notebook from "../../assets/lottie/Notebook.json"
 
 
 const Lottie = lazy(() => import("lottie-react"));

@@ -1,4 +1,4 @@
-interface CardElements{
+interface CardElements {
     title : string,
     content : string,
     button : string
