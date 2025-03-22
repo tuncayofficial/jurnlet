@@ -26,7 +26,7 @@ export function Welcome() {
   
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col justify-center items-center h-full w-full">
 
         { /** Intro */ }
         <section className="intro min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-200 to-blue-200 p-6 rounded-3xl">
