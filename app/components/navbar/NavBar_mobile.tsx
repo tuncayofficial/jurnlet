@@ -4,6 +4,7 @@ import { IoLibrary } from "react-icons/io5";
 import { FaPlusSquare } from "react-icons/fa";
 import { MdQuiz } from "react-icons/md";
 import { FaHeart } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const NavbarMobile: React.FC = () => {
@@ -116,10 +117,10 @@ const NavbarMobile: React.FC = () => {
           onClick={() => handleTabClick("favourites")}
         >
           <span className="text-3xl">
-            <FaHeart />
+            <FaUser />
           </span>
           <span className="text-xs sm:text-sm md:text-base">
-            <strong>Favourites</strong>
+            <strong>Account</strong>
           </span>
           {activeTab === "favourites" && (
             <motion.div

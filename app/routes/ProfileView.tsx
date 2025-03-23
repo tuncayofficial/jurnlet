@@ -9,6 +9,7 @@ import { FaFeatherAlt } from "react-icons/fa";
 import { useAuth } from '~/contexts/auth/auth';
 import { ppid } from 'process';
 import { Navigate } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
 
 
 const AccountSettings: React.FC = () => {
