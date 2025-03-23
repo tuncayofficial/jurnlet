@@ -91,7 +91,7 @@ export default function LibraryDefinition() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="rounded-lg font-semibold w-full shadow-lg bg-indigo-500 p-6 text-white mb-6 hover:bg-indigo-800 cursor-pointer transition-all scale-90"
+                            className="rounded-lg font-semibold w-full shadow-lg bg-indigo-500 p-6 text-white mb-6 hover:bg-indigo-800 cursor-pointer transition-all scale-90 md:scale-100"
                             key={index}
                         >
                             {definition}
