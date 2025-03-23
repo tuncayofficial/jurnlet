@@ -1,35 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Logo from "../../assets/JURNLET LOGOO.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import ProfilePic from "../../assets/jurnlet cover.png";
 import { useAuth } from "~/contexts/auth/auth";
 import { doSignInWithGoogle, doSignOut } from "~/firebase/auth/authFunctions";
+import { motion } from "framer-motion";
 
 function Header() {
   const [options, setOptions] = useState<boolean>(false);
   const authContext = useAuth();
-  const { currentUser, userLoggedIn, loading } = authContext ?? {}
+  const { currentUser, userLoggedIn, loading } = authContext ?? {};
+  const navigate = useNavigate();
 
-
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const setOptionsState = (e: React.MouseEvent<HTMLButtonElement>) => {
     setOptions((prev) => !prev);
   };
 
-  const onGoogleSignIn = (e : React.MouseEvent<HTMLButtonElement>) =>{
-    return doSignInWithGoogle().catch(error =>{
-      console.error(error)
-    })
-  }
+  const onGoogleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    return doSignInWithGoogle().catch((error) => {
+      console.error(error);
+    });
+  };
 
-  const onSignOut = (e : React.MouseEvent<HTMLButtonElement>) =>{
-    return doSignOut().catch(error =>{
-      console.error(error)
-    })
-  }
+  const onSignOut = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setOptions(false)
+    return doSignOut().catch((error) => {
+      console.error(error);
+    });
+  };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="bg-gray-800 fixed top-0 w-full md:block hidden h-20 shadow-md items-center justify-between z-10">
@@ -53,42 +75,48 @@ function Header() {
         </ul>
         <ul className="ml-auto flex items-center justify-between text-lg pr-3">
           <li>
-            <button type = "submit" onClick={onGoogleSignIn}
-              className={`${userLoggedIn ? "" : "hidden"} text-white bg-indigo-500 mx-6 text-center px-3 py-2 rounded-xl hover:bg-indigo-800 transition-all duration-300 hover:text-white flex items-center gap-2 cursor-pointer`}
+            <button
+              type="submit"
+              onClick={onGoogleSignIn}
+              className={`${
+                userLoggedIn ? "" : "hidden"
+              } text-white bg-indigo-500 mx-6 text-center px-3 py-2 rounded-xl hover:bg-indigo-800 transition-all duration-300 hover:text-white flex items-center gap-2 cursor-pointer`}
             >
               <FaPlus />
               <strong>New Article</strong>
             </button>
           </li>
-          <li className="mx-3 text-xl hover:text-amber-300 duration-100 cursor-pointer hover:animate-shake">
+          <li className={`${
+                userLoggedIn ? "" : "hidden"
+              } mx-3 text-xl hover:text-amber-300 duration-100 cursor-pointer hover:animate-shake`}>
             <FaBell />
           </li>
+          { userLoggedIn ? "" : (
+          <li className="flex flex-row justify-center items-center">
+            <button className="px-4 py-2 mx-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/login">Login</Link></button>
+            <button className="px-4 py-2 ml-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/signup">Sign up</Link></button>
+          </li>
+          )
+          }
           <li>
-            <div className="relative inline-block text-left">
+            <div className="relative inline-block text-left" ref={menuRef}>
               <div>
                 <button
                   type="button"
+                  ref={buttonRef}
                   onClick={setOptionsState}
-                  className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs cursor-pointer"
+                  className={`inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs cursor-pointer`}
                   id="menu-button"
-                  aria-expanded={options}
+                  aria-expanded={options ? "true" : "false"}
                   aria-haspopup="true"
                 >
-                  { userLoggedIn ? (
+                  {userLoggedIn ? (
                     <img
-                    className="rounded-full w-11 h-11 border-2 border-white"
-                    src={currentUser?.photoURL ?? ProfilePic}
-                    alt="Profile"
-                  />) : (
-                    (
-                      <img
                       className="rounded-full w-11 h-11 border-2 border-white"
-                      src={ProfilePic}
+                      src={currentUser?.photoURL ?? ProfilePic}
                       alt="Profile"
-                    />)
-                  )
-                  
-                  }
+                    />
+                  ) : ""}
                 </button>
               </div>
               <div
@@ -128,18 +156,15 @@ function Header() {
                   >
                     License
                   </Link>
-                  <form method="POST" action="#" role="none">
-                    <button
-                      onClick={onSignOut}
-                      type="submit"
-                      className="block w-full px-4 py-2 text-left text-sm cursor-pointer text-white hover:bg-red-500 transition-all"
-                      role="menuitem"
-                      tabIndex={-1}
-                      id="menu-item-3"
-                    >
-                      Sign out
-                    </button>
-                  </form>
+                  <button
+                    onClick={onSignOut}
+                    className="block w-full px-4 py-2 text-left text-sm cursor-pointer text-white hover:bg-red-500 transition-all"
+                    role="menuitem"
+                    tabIndex={-1}
+                    id="menu-item-3"
+                  >
+                    Sign out
+                  </button>
                 </div>
               </div>
             </div>

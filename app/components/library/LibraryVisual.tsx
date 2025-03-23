@@ -11,6 +11,10 @@ const Lottie = lazy(() => import("lottie-react"));
 
 export default function LibraryVisual() {
 
+    const [definitions, setDefinitions] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
     const { word } = useParams(); 
 
     const getFontSize = (wordLength: number) => {
@@ -19,13 +23,40 @@ export default function LibraryVisual() {
         return "text-lg";
     };
 
+    useEffect(() => {
+        const fetchDefinition = async () => {
+            if (!word) return;
+            setLoading(true);
+            setError(null);
+
+            try {
+                const response = await axios.get(`http://localhost:3000/api/definition/${word}`);
+                const data = response.data.limitedDefinitions;
+
+                if (Array.isArray(data) && data.length > 0) {
+                    setDefinitions(data);
+                    setTimeout(() => setLoading(false), 1500);  
+                } else {
+                    setDefinitions([]);
+                }
+            } catch (error) {
+                console.error("Error fetching definition:", error);
+                setError("Error fetching definition. Please try again.");
+                setLoading(false);
+            }
+        };
+
+        fetchDefinition();
+    }, [word]);
+
+
     const displayWord = word || "Word"; 
     const fontSizeClass = getFontSize(displayWord.length);
 
     return (
         <div className="flex flex-col justify-center items-center h-screen bg-white">
             <div className="relative w-[300px] h-[300px] flex justify-center items-center">
-                <div className="w-32 h-32 p-4 -mb-4 bg-indigo-500 rounded-full flex justify-center items-center text-white font-bold shadow-lg">
+                <div className={`w-32 h-32 p-4 -mb-4 ${definitions.length > 0 ? "bg-indigo-500" : "bg-red-500"} rounded-full flex justify-center items-center text-white font-bold shadow-lg`}>
                     <span className={fontSizeClass}>{displayWord.toUpperCase()}</span>
                 </div>
             </div>

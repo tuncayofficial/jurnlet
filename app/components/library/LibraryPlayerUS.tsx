@@ -79,7 +79,7 @@ export default function LibraryPlayerUS() {
                 {/* Play/Pause Button */}
                 <button
                     onClick={togglePlayPause}
-                        className={`p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none ${result === "No pronunciation found." ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}`}                >
+                    className={`p-3 bg-blue-500 text-white rounded-full cursor-pointer hover:bg-blue-600 focus:outline-none ${result === "No pronunciation found." ? "bg-red-500 pointer-events-none opacity-50 hover:cursor-not-allowed" : ""}`}>
                     {isPlaying ? (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
