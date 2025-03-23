@@ -8,14 +8,16 @@ import { LuHandHeart } from "react-icons/lu";
 import { FaFeatherAlt } from "react-icons/fa";
 import { useAuth } from '~/contexts/auth/auth';
 import { ppid } from 'process';
+import { Navigate } from "react-router-dom";
+
 
 const AccountSettings: React.FC = () => {
   
   const authContext = useAuth();
   const { currentUser, userLoggedIn, loading } = authContext ?? {};
 
-  return (
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-4">
+  return userLoggedIn ? (
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
@@ -43,7 +45,7 @@ const AccountSettings: React.FC = () => {
       
                 {/* Tooltip */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-max px-3 py-1 text-sm text-white bg-gray-900 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
-                  Student
+                  Owner
                 </div>
               </div>
               
@@ -150,7 +152,7 @@ const AccountSettings: React.FC = () => {
 
       </div>
     </div>
-  );
+  ) : <Navigate to="/signup" />
 };
 
 export default AccountSettings;
