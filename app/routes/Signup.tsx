@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaUser, FaLock, FaEnvelope, FaGoogle, FaFacebook, FaArrowLeft } from "react-icons/fa";
-import { doCreateUserWithEmailAndPassword } from "~/firebase/auth/authFunctions";
+import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "~/firebase/auth/authFunctions";
 import { useNavigate } from "react-router";
 import { motion } from "framer-motion"
 // Icons
@@ -42,13 +42,27 @@ export default function Signup() {
   
       // Redirect after 1 second
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/account-settings";
       }, 1000);
     } catch (error) {
       setError(true);
       setErrorMessage("Couldn't create an account.");
     }
   };
+
+  const handleGoogleSignUp = async() =>{
+      try {
+        await doSignInWithGoogle()
+        setError(false)
+        setSuccessful(true)
+        setTimeout(() => {
+          window.location.href = "/account-settings";
+        }, 1000);
+      } catch (error) {
+        setError(true);
+        setErrorMessage("Couldn't create an account.");
+      }
+  }
   
 
   return (
@@ -124,7 +138,7 @@ export default function Signup() {
 
         {/* Social Login Buttons */}
         <div className="flex gap-4">
-          <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 p-3 font-medium text-white transition hover:bg-red-700">
+          <button onClick={handleGoogleSignUp} className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 p-3 font-medium text-white transition hover:bg-red-700">
             <FaGoogle /> Google
           </button>
           <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 p-3 font-medium text-white transition hover:bg-blue-700">

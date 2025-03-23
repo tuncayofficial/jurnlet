@@ -1,42 +1,40 @@
 import React from 'react';
-import PP from "../assets/jurnlet_logo.png"
+import PP from "../assets/JURNLET LOGOO.jpg"
 import { PiStudent } from "react-icons/pi";
 import { PiChalkboardTeacher } from "react-icons/pi";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { FaCrown } from "react-icons/fa";
 import { LuHandHeart } from "react-icons/lu";
 import { FaFeatherAlt } from "react-icons/fa";
+import { useAuth } from '~/contexts/auth/auth';
+import { ppid } from 'process';
 
 const AccountSettings: React.FC = () => {
+  
+  const authContext = useAuth();
+  const { currentUser, userLoggedIn, loading } = authContext ?? {};
+
   return (
     <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-xl font-semibold curp">My Account</h1>
-          <div className="flex space-x-2">
-            <button className="text-gray-400 hover:text-gray-200 cursor-pointer">
-              Security
-            </button>
-            <button className="text-gray-400 hover:text-gray-200 cursor-pointer">
-             Status
-            </button>
-            
-          </div>
+          
         </div>
 
         {/* Profile Section */}
         <div className="flex items-center mb-6">
           <div className="relative">
             <img
-              src={PP} // Replace with your profile image
+              src={currentUser?.photoURL ?? PP} // Replace with your profile image
               alt="Profile"
               className="w-20 h-20 rounded-full border-4 border-gray-700"
             />
             
           </div>
           <div className="ml-4">
-            <h2 className="text-lg font-semibold">abdullahtnz</h2>
+            <h2 className="text-lg font-semibold">{currentUser?.displayName}</h2>
             <div className="flex space-x-2 ">
               
               <div className="relative group flex items-center">
@@ -106,11 +104,9 @@ const AccountSettings: React.FC = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">USERNAME</p>
-              <p className="text-white">abdullahtnz.</p>
+              <p className="text-white">{currentUser?.email?.split("@")[0]}</p>
             </div>
-            <button className="ml-auto mb- bg-indigo-500 text-white px-4 py-1 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
-            Edit
-          </button>
+            
           </div>
 
           {/* E-posta */}
@@ -118,12 +114,10 @@ const AccountSettings: React.FC = () => {
             <div>
               <p className="text-gray-400 text-sm">E-MAIL</p>
               <p className="text-white">
-                dazbix@gmail.com 
+                {currentUser?.email}
               </p>
             </div>
-            <button className="ml-auto mb- bg-indigo-500 text-white px-4 py-1 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
-            Edit
-          </button>
+            
           </div>
 
           {/* Telefon Numarası */}
@@ -134,14 +128,8 @@ const AccountSettings: React.FC = () => {
                 6663629 
               </p>
             </div>
-            <div className="flex space-x-2">
-            <button className="ml-auto mb- bg-indigo-500 text-white px-4 py-1 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
-            Delete
-          </button>
-              <button className="ml-auto mb- bg-indigo-500 text-white px-4 py-1 rounded-lg hover:bg-indigo-900  duration-200 cursor-pointer">
-            Edit
-          </button>
-            </div>
+            
+            
           </div>
         </div>
         <hr className='mt-3 text-gray-400' />

@@ -28,10 +28,13 @@ function Header() {
   };
 
   const onSignOut = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    setOptions(false)
-    return doSignOut().catch((error) => {
-      console.error(error);
-    });
+    try {
+      await doSignOut()
+      setOptions(false)
+      window.location.reload()
+    } catch(error) {
+      console.error(error)
+    }
   };
 
   useEffect(() => {
