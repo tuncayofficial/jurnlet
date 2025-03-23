@@ -8,6 +8,22 @@ import LibraryPlayerUS from "./LibraryPlayerUS";
 import Notebook from "../../assets/lottie/Notebook.json"
 const Lottie = lazy(() => import("lottie-react"));
 
+interface Definition {
+    definition: string;
+}
+  
+  interface Meaning {
+    definitions: Definition[];
+}
+  
+  interface Entry {
+    meanings: Meaning[];
+}
+  
+  interface ResponseData {
+    data: Entry[];
+}
+
 
 export default function LibraryVisual() {
 
@@ -30,11 +46,15 @@ export default function LibraryVisual() {
             setError(null);
 
             try {
-                const response = await axios.get(`http://localhost:3000/api/definition/${word}`);
-                const data = response.data.limitedDefinitions;
+                const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                const dataDefinitions = (response.data as Entry[]).flatMap((entry: Entry) =>
+                    entry.meanings.flatMap((meaning: Meaning) =>
+                      meaning.definitions.map((def: Definition) => def.definition)
+                    )
+                  ).slice(0, 5);
 
-                if (Array.isArray(data) && data.length > 0) {
-                    setDefinitions(data);
+                if (Array.isArray(dataDefinitions) && dataDefinitions.length > 0) {
+                    setDefinitions(dataDefinitions);
                     setTimeout(() => setLoading(false), 1500);  
                 } else {
                     setDefinitions([]);
