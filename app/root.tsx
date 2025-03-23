@@ -14,6 +14,7 @@ import { AuthProvider } from "./contexts/auth/auth";
 
 import Header from "./components/navbar/NavBar_main";
 import NavbarMobile from "./components/navbar/NavBar_mobile";
+import SearchError from "./routes/SearchError";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -63,6 +64,21 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    return (
+    <div>
+      <div className="hidden md:block">
+        <Header />
+      </div>
+      <div className="block md:hidden">
+        <NavbarMobile />
+      </div>
+      <SearchError />
+    </div>
+ ); // Render search_error.tsx on 404
+  }
+
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;

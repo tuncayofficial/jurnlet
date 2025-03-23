@@ -125,7 +125,7 @@ export default function Signup() {
         {/* Signup Button */}
         <button onClick = {() =>{
           handleSignUp(email, password, confirmPassword)
-        }} className="w-full rounded-lg bg-blue-600 p-3 font-medium text-white transition hover:bg-blue-700">
+        }} className="w-full rounded-lg bg-blue-600 p-3 font-medium text-white transition cursor-pointer hover:bg-blue-700">
           Sign Up
         </button>
 
@@ -138,10 +138,10 @@ export default function Signup() {
 
         {/* Social Login Buttons */}
         <div className="flex gap-4">
-          <button onClick={handleGoogleSignUp} className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-600 p-3 font-medium text-white transition hover:bg-red-700">
+          <button onClick={handleGoogleSignUp} className="flex w-full items-center justify-center cursor-pointer gap-2 rounded-lg bg-red-600 p-3 font-medium text-white transition hover:bg-red-700">
             <FaGoogle /> Google
           </button>
-          <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 p-3 font-medium text-white transition hover:bg-blue-700">
+          <button className="flex w-full items-center justify-center gap-2 rounded-lg cursor-pointer bg-blue-600 p-3 font-medium text-white transition hover:bg-blue-700">
             <FaFacebook /> Facebook
           </button>
         </div>
