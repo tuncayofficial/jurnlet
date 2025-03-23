@@ -1,9 +1,21 @@
-    import React, { useRef, useState, useEffect} from "react";
-    import axios from "axios";
-    import { useParams } from "react-router";
+import React, { useRef, useState, useEffect} from "react";
+import axios from "axios";
+import { useParams } from "react-router";
 import { audio } from "framer-motion/client";
 
-    export default function LibraryPlayerUK() {
+interface AudioLink {
+    audio: string;
+}
+  
+interface Phonetic {
+    phonetics: AudioLink[];
+}
+  
+interface ResponseData {
+    data: Phonetic[];
+}
+
+export default function LibraryPlayerUK() {
         const audioRef = useRef<HTMLAudioElement>(null);
         const [isPlaying, setIsPlaying] = useState(false);
         const [volume, setVolume] = useState(1);
@@ -14,8 +26,10 @@ import { audio } from "framer-motion/client";
         useEffect(() => {
             const fetchDefinition = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3000/api/definition/${word}`);
-                    const data = response.data.audioResource
+                    const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                const data = (response.data[0].phonetics as AudioLink[])
+                .map((audioLink: AudioLink) => audioLink.audio)  // Extract the audio links
+                .filter((audioUrl: string) => audioUrl.length > 0); 
 
                     if(Array.isArray(data) && data.length > 0){
                         setAudioLink(data);               

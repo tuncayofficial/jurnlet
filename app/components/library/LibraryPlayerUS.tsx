@@ -3,6 +3,18 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { audio } from "framer-motion/client";
 
+interface AudioLink {
+    audio: string;
+}
+  
+interface Phonetic {
+    phonetics: AudioLink[];
+}
+  
+interface ResponseData {
+    data: Phonetic[];
+}
+
 export default function LibraryPlayerUS() {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -15,8 +27,10 @@ export default function LibraryPlayerUS() {
     useEffect(() => {
         const fetchDefinition = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/definition/${word}`);
-                const data = response.data.audioResource
+                const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                const data = (response.data[0].phonetics as AudioLink[])
+                .map((audioLink: AudioLink) => audioLink.audio)  // Extract the audio links
+                .filter((audioUrl: string) => audioUrl.length > 0); 
 
                 if(Array.isArray(data) && data.length > 0){
                     setAudioLink(data);               
@@ -72,7 +86,7 @@ export default function LibraryPlayerUS() {
     }, []);
 
     return (
-        <div className="flex flex-col p-6 mx-6 items-center justify-center bg-gray-100 rounded-lg shadow-md">
+        <div className="flex flex-col p-6 mt-6 mb-15 md:mb-6 items-center justify-center bg-gray-100 rounded-lg shadow-md">
             {/* Audio Player Controls */}
             <span className="bg-indigo-500 font-bold rounded-3xl my-2 mb-10 p-2 px-5 uppercase">American</span>
             <div className="flex items-center space-x-4">
