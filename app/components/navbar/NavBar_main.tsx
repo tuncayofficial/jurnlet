@@ -3,6 +3,7 @@ import Logo from "../../assets/JURNLET LOGOO.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
 import ProfilePic from "../../assets/jurnlet cover.png";
 import { useAuth } from "~/contexts/auth/auth";
 import { doSignInWithGoogle, doSignOut } from "~/firebase/auth/authFunctions";
@@ -10,6 +11,7 @@ import { motion } from "framer-motion";
 
 function Header() {
   const [options, setOptions] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("")
   const authContext = useAuth();
   const { currentUser, userLoggedIn, loading } = authContext ?? {};
   const navigate = useNavigate();
@@ -37,6 +39,14 @@ function Header() {
     }
   };
 
+  const handleSearch = async(e : React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault(); // Prevents form from refreshing the page
+    if (searchQuery.trim()) {
+      navigate(`/library/${searchQuery}`);
+      setSearchQuery("")
+    }
+  }
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -58,7 +68,7 @@ function Header() {
 
   return (
     <header className="bg-gray-800 fixed top-0 w-full md:block hidden h-20 shadow-md items-center justify-between z-20">
-      <nav className="flex items-center p-2">
+      <nav className="flex justify-between items-center p-2">
         <div>
           <img className="h-15 inline pl-6" src={Logo} alt="Jurnlet Logo" />
         </div>
@@ -76,6 +86,23 @@ function Header() {
             <Link to="">Help</Link>
           </li>
         </ul>
+        <div className="hidden md:flex md:mx-auto items-center">
+            <form onSubmit={handleSearch} className="relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="flex-grow justify-center bg-gray-600 text-white placeholder-gray-300 rounded-full py-2 px-4 pr-24 focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white"
+              >
+                <FaSearch />
+              </button>
+            </form>
+          </div>
         <ul className="ml-auto flex items-center justify-between text-lg pr-3">
           <li>
             <button

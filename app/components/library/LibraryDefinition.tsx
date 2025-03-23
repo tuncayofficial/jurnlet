@@ -10,15 +10,15 @@ interface Definition {
     definition: string;
 }
   
-  interface Meaning {
+interface Meaning {
     definitions: Definition[];
 }
   
-  interface Entry {
+interface Entry {
     meanings: Meaning[];
 }
   
-  interface ResponseData {
+interface ResponseData {
     data: Entry[];
 }
 
