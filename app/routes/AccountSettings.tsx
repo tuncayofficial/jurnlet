@@ -18,7 +18,7 @@ const AccountSettings: React.FC = () => {
 
   return userLoggedIn ? (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-xl font-semibold curp">My Account</h1>

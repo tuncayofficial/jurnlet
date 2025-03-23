@@ -57,7 +57,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="bg-gray-800 fixed top-0 w-full md:block hidden h-20 shadow-md items-center justify-between z-10">
+    <header className="bg-gray-800 fixed top-0 w-full md:block hidden h-20 shadow-md items-center justify-between z-20">
       <nav className="flex items-center p-2">
         <div>
           <img className="h-15 inline pl-6" src={Logo} alt="Jurnlet Logo" />
@@ -133,7 +133,7 @@ function Header() {
               >
                 <div className="py-1 font-bold" role="none">
                   <Link
-                    to="/account"
+                    to="/account-settings "
                     className="block px-4 py-2 text-sm text-white hover:bg-indigo-500 transition-all"
                     role="menuitem"
                     tabIndex={-1}
