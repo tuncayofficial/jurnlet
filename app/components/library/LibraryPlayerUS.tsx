@@ -86,7 +86,7 @@ export default function LibraryPlayerUS() {
     }, []);
 
     return (
-        <div className="flex flex-col p-6 mx-6 items-center justify-center bg-gray-100 rounded-lg shadow-md">
+        <div className="flex flex-col p-6 mt-6 mb-15 md:mb-6 items-center justify-center bg-gray-100 rounded-lg shadow-md">
             {/* Audio Player Controls */}
             <span className="bg-indigo-500 font-bold rounded-3xl my-2 mb-10 p-2 px-5 uppercase">American</span>
             <div className="flex items-center space-x-4">

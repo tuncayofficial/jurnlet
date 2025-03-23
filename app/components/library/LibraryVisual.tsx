@@ -81,7 +81,7 @@ export default function LibraryVisual() {
                 </div>
             </div>
             <h2 className="text-black font-extrabold text-3xl mb-8 uppercase">Pronunciation</h2>
-            <div className="flex flex-row m-2 justify-center items-center sm:m-2">
+            <div className="flex flex-col md:flex-row m-2 justify-center items-center mx-4">
                 <LibraryPlayerUK />
                 <LibraryPlayerUS />
             </div>
