@@ -133,7 +133,7 @@ function Header() {
               >
                 <div className="py-1 font-bold" role="none">
                   <Link
-                    to="/account-settings "
+                    to="/account-settings"
                     className="block px-4 py-2 text-sm text-white hover:bg-indigo-500 transition-all"
                     role="menuitem"
                     tabIndex={-1}

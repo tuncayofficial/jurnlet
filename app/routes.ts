@@ -8,5 +8,6 @@ export default [
     route('/404_not_found', "routes/SearchError.tsx"),
     route('/signup', "routes/Signup.tsx"),
     route('/login', "routes/Login.tsx"),
-    route('/account-settings', "routes/AccountSettings.tsx")
+    route('/account-settings', "routes/AccountSettings.tsx"),
+    route('/profile/:id', "routes/ProfileView.tsx")
 ] satisfies RouteConfig;
