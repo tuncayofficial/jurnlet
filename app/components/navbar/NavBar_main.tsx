@@ -42,7 +42,7 @@ function Header() {
   const handleSearch = async(e : React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault(); // Prevents form from refreshing the page
     if (searchQuery.trim()) {
-      navigate(`/library/${searchQuery}`);
+      window.location.href = `/library/${searchQuery}`
       setSearchQuery("")
     }
   }
@@ -74,7 +74,7 @@ function Header() {
         </div>
         <ul className="text-lg md:text-lg lg:text-xl flex items-center ml-3">
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
-            <Link to="">Quizzes</Link>
+            <Link to="">JurnLet</Link>
           </li>
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="">Boards</Link>
@@ -83,7 +83,7 @@ function Header() {
             <Link to="/library/hello">Library</Link>
           </li>
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
-            <Link to="">Help</Link>
+            <Link to="">Quizzes</Link>
           </li>
         </ul>
         <div className="hidden md:flex md:mx-auto items-center">
@@ -123,8 +123,8 @@ function Header() {
           </li>
           { userLoggedIn ? "" : (
           <li className="flex flex-row justify-center items-center">
-            <button className="px-4 py-2 mx-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/login">Login</Link></button>
-            <button className="px-4 py-2 ml-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/signup">Sign up</Link></button>
+            <Link to="/login"><button className="px-4 py-2 mx-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Login</button></Link>
+            <Link to="/signup"><button className="px-4 py-2 ml-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Sign up</button></Link>
           </li>
           )
           }

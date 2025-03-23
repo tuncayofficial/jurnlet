@@ -36,7 +36,7 @@ const AccountSettings: React.FC = () => {
             
           </div>
           <div className="ml-4">
-            <h2 className="text-lg font-semibold">{currentUser?.displayName}</h2>
+            <h2 className="text-lg font-semibold mb-1">{currentUser?.displayName}</h2>
             <div className="flex space-x-2 ">
               
               <div className="relative group flex items-center">

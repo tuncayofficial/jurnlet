@@ -21,12 +21,9 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 // Optional: Analytics will only work in a browser environment
 let analytics;
-if (typeof window !== "undefined") {
-  analytics = getAnalytics(app);
-}
 
 const auth = getAuth(app);
 
 const db = getFirestore(app)
 
-export { app, auth, analytics, db };
+export { app, auth, db };
