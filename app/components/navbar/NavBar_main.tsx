@@ -42,7 +42,7 @@ function Header() {
   const handleSearch = async(e : React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault(); // Prevents form from refreshing the page
     if (searchQuery.trim()) {
-      navigate(`/library/${searchQuery}`);
+      window.location.href = `/library/${searchQuery}`
       setSearchQuery("")
     }
   }
