@@ -28,6 +28,7 @@ function Header() {
   };
 
   const onSignOut = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setOptions(false)
     return doSignOut().catch((error) => {
       console.error(error);
     });
@@ -90,11 +91,13 @@ function Header() {
               } mx-3 text-xl hover:text-amber-300 duration-100 cursor-pointer hover:animate-shake`}>
             <FaBell />
           </li>
+          { userLoggedIn ? "" : (
           <li className="flex flex-row justify-center items-center">
-            <button className="px-4 py-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Login</button>
-            <button className="px-4 py-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Sign up</button>
+            <button className="px-4 py-2 mx-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/login">Login</Link></button>
+            <button className="px-4 py-2 ml-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200"><Link to="/signup">Sign up</Link></button>
           </li>
-
+          )
+          }
           <li>
             <div className="relative inline-block text-left" ref={menuRef}>
               <div>

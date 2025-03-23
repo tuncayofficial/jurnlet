@@ -17,24 +17,39 @@ export default function Signup() {
 
   const navigate = useNavigate()
 
-  const handleSignUp = async(email : string, password : string) =>{
+  const handleSignUp = async (email : string, password : string, confirmPassword : string) => {
     try {
+      if (password !== confirmPassword) {
+        setError(true);
+        setErrorMessage("Invalid password confirmation.");
+        return;
+      }
+  
+      if (password.length < 8) {
+        setError(true);
+        setErrorMessage("Your password should be at least 8 characters.");
+        return;
+      }
+  
       await doCreateUserWithEmailAndPassword(email, password);
-      setError(false)
+  
+      setError(false);
       setSuccessful(true);
-
+  
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-
+  
+      // Redirect after 1 second
       setTimeout(() => {
-        window.location.href = "/"
+        window.location.href = "/";
       }, 1000);
-    } catch(error){
-      setError(true)
-      setErrorMessage("Couldn't create an account")
+    } catch (error) {
+      setError(true);
+      setErrorMessage("Couldn't create an account.");
     }
-  }
+  };
+  
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-gray-900 px-4 relative">
@@ -95,7 +110,7 @@ export default function Signup() {
 
         {/* Signup Button */}
         <button onClick = {() =>{
-          handleSignUp(email, password)
+          handleSignUp(email, password, confirmPassword)
         }} className="w-full rounded-lg bg-blue-600 p-3 font-medium text-white transition hover:bg-blue-700">
           Sign Up
         </button>
