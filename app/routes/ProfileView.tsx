@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PP from "../assets/JURNLET LOGOO.jpg"
 import { PiStudent } from "react-icons/pi";
 import { PiChalkboardTeacher } from "react-icons/pi";
@@ -10,12 +10,39 @@ import { useAuth } from '~/contexts/auth/auth';
 import { ppid } from 'process';
 import { Navigate } from "react-router-dom";
 import { getAuth } from 'firebase/auth';
+import { useParams } from 'react-router-dom';
+
+import { getFirestore, doc, setDoc, getDoc, serverTimestamp, DocumentReference, DocumentSnapshot } from 'firebase/firestore';
+import { db } from "../firebase/firebaseConfig"; // Ensure db is initialized correctly
+
+interface User {
+  email: string;
+  displayName: string;
+  photoURL?: string;
+}
 
 
-const AccountSettings: React.FC = () => {
+const ProfileView: React.FC = () => {
   
   const authContext = useAuth();
-  const { currentUser, userLoggedIn, loading } = authContext ?? {};
+  const { currentUser, userLoggedIn, loading, userProfileRef } = authContext ?? {};
+  const [userData, setUserData] = useState<any>(null);
+
+  const { id } = useParams()
+
+
+  useEffect(() => {
+    if (id) {
+      const userRef = doc(db, "users", id);
+      getDoc(userRef).then((docSnap : DocumentSnapshot) => {
+        if (docSnap.exists()) {
+          setUserData(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      });
+    }
+  }, [id]);
 
   return userLoggedIn ? (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
@@ -30,14 +57,14 @@ const AccountSettings: React.FC = () => {
         <div className="flex items-center mb-6">
           <div className="relative">
             <img
-              src={currentUser?.photoURL ?? PP} // Replace with your profile image
+              src={userData?.photoURL ?? PP} // Replace with your profile image
               alt="Profile"
               className="w-20 h-20 rounded-full border-4 border-gray-700"
             />
             
           </div>
           <div className="ml-4">
-            <h2 className="text-lg font-semibold">{currentUser?.displayName}</h2>
+            <h2 className="text-lg font-semibold">{userData?.displayName}</h2>
             <div className="flex space-x-2 ">
               
               <div className="relative group flex items-center">
@@ -107,7 +134,7 @@ const AccountSettings: React.FC = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">USERNAME</p>
-              <p className="text-white">{currentUser?.email?.split("@")[0]}</p>
+              <p className="text-white">{userData?.email?.split("@")[0]}</p>
             </div>
             
           </div>
@@ -117,7 +144,7 @@ const AccountSettings: React.FC = () => {
             <div>
               <p className="text-gray-400 text-sm">E-MAIL</p>
               <p className="text-white">
-                {currentUser?.email}
+                {userData?.email}
               </p>
             </div>
             
@@ -156,4 +183,4 @@ const AccountSettings: React.FC = () => {
   ) : <Navigate to="/signup" />
 };
 
-export default AccountSettings;
+export default ProfileView;
