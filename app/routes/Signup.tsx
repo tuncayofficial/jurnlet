@@ -68,7 +68,7 @@ export default function Signup() {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-gray-900 px-4 relative">
       {/* Signup Form Container */}
-      <div className="w-full max-w-md rounded-2xl bg-gray-800 mt-15 p-8 shadow-xl relative">
+      <div className="w-full max-w-md rounded-2xl bg-gray-800 mt-15 p-6 shadow-xl relative scale-92">
         
         {/* Return Home (inside box, like in login) */}
                 <a href="/" className="absolute top-4 left-6 text-gray-400 hover:text-white transition flex items-center mt-2">
@@ -147,7 +147,7 @@ export default function Signup() {
         </div>
 
         {/* Already have an account? */}
-        <p className="mt-4 text-center text-sm text-gray-400">
+        <p className="mt-6 mb-2 text-center text-md text-gray-400">
           Already have an account? <a href="/login" className="text-blue-400 hover:underline">Login</a>
         </p>
       </div>

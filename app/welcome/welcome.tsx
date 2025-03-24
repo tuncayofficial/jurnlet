@@ -52,11 +52,11 @@ export function Welcome() {
   return (
     <div className="flex flex-col justify-center items-center h-full w-full">
         { /** Intro bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 */ }
-        <section className="min-h-screen w-full flex flex-col bg-gray-900 items-center shadow-lg justify-center relative overflow-hidden md:rounded-b-full">
+        <section className="min-h-screen w-full flex flex-col bg-gray-900 items-center shadow-lg justify-center relative overflow-hidden rounded-lg md:rounded-b-full">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 -left-25 w-96 h-96 bg-indigo-300 opacity-20 rounded-full blur-3xl "></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 opacity-20 rounded-full blur-3xl "></div>
+        <div className="hidden md:block absolute top-0 -left-25 w-96 h-96 bg-indigo-300 opacity-20 rounded-full blur-3xl "></div>
+        <div className="hidden md:block absolute bottom-0 right-0 w-96 h-96 bg-purple-300 opacity-20 rounded-full blur-3xl "></div>
       </div>
 
       {/* Main Content */}
@@ -66,12 +66,12 @@ export function Welcome() {
           <img
             src={logo} // Replace with the actual path to the JurnLet logo
             alt="JurnLet Logo"
-            className="w-32 h-32 sm:w-60 sm:h-60 mx-auto rounded-full animate-bounce"
+            className="w-40 h-40 sm:w-60 sm:h-60 mt-36 md:mt-2 md:mx-auto rounded-full animate-bounce"
           />
         </div>
 
         {/* Tagline bg-gradient-to-r from-indigo-600 to-purple-600 */}
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text  mb-6">
+        <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text mb-6">
         <motion.div 
           className=""
           variants={parentVariants}
@@ -140,7 +140,7 @@ export function Welcome() {
           <motion.img src = {HeroImage}  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onHoverStart={() => console.log('hover started!')}/>
         </div>
         
-        <div className="w-100 h-80 relative m-auto bg-gray-200 rounded-xl mx-4 p-6 shadow-xl z-10 perspective-dramatic translate-z-12 rotate-x-0  hover:scale-105 transition-all">
+        <div className="w-100 h-80 relative m-auto bg-gray-200 rounded-xl mx-4 p-6 shadow-xl z-10 perspective-dramatic translate-z-12 rotate-x-0 scale-90 md:scale-100 hover:scale-105 transition-all">
           <div className="flex flex-row items-start">
             <div className="p-1.5 rounded-full bg-red-500 mr-2"></div>
             <div className="p-1.5 rounded-full bg-yellow-500"></div>

@@ -58,7 +58,7 @@ export default function Login() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-900 px-4">
       {/* Container */}
-      <div className="w-full max-w-md rounded-2xl bg-gray-800 p-8 shadow-xl relative">
+      <div className="w-full max-w-md rounded-2xl bg-gray-800 p-4 shadow-xl relative mt-20 scale-98">
       
         {/* Return Home Arrow - Now at the absolute top of the page */}
         <a href="/" className="absolute top-6 left-6 flex items-center text-gray-400 hover:text-white transition">
@@ -129,7 +129,7 @@ export default function Login() {
         </div>
 
         {/* Signup Link */}
-        <p className="mt-10 text-center text-sm text-gray-400">
+        <p className="mt-8 text-center text-md text-gray-400">
           Don't have an account? <a href="/signup" className="text-blue-400 hover:underline">Sign up</a>
         </p>
       </div>

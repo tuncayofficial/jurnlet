@@ -44,7 +44,7 @@ export default function LibraryDefinition() {
                     entry.meanings.flatMap((meaning: Meaning) =>
                       meaning.definitions.map((def: Definition) => def.definition)
                     )
-                  ).slice(0, 5);
+                  ).slice(0, 4);
 
                 if (Array.isArray(dataDefinitions) && dataDefinitions.length > 0) {
                     setDefinitions(dataDefinitions);
@@ -64,7 +64,7 @@ export default function LibraryDefinition() {
 
     return (
         <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-800 shadow-md">
-            <div className="hidden sm:block w-60 h-60 absolute top-16 left-240 cursor-pointer">
+            <div className="hidden sm:block w-60 h-60 absolute top-16 md:left-195 lg:left-240 cursor-pointer">
                 <Suspense fallback={<p className="text-white">Loading animation...</p>}>
                     <Lottie
                         onComplete={() => {
@@ -76,11 +76,11 @@ export default function LibraryDefinition() {
                     />
                 </Suspense>
             </div>
-            <h1 className="font-extrabold text-4xl text-white mb-8 -mt-2">{word?.toUpperCase()}</h1>
+            <h1 className="font-extrabold text-4xl text-white mb-4 mt-16">{word?.toUpperCase()}</h1>
 
             {/*{error && <p className="text-red-500 mb-4">{error}</p>}  Error message */}
 
-            <ul className="flex flex-col justify-center items-center w-full max-w-md">
+            <ul className="flex flex-col justify-center items-center w-full max-w-lg ">
                 {loading ? (
                     <Suspense fallback={<p className="text-white">Loading animation...</p>}>
                         <Lottie animationData={LoaderWatch} loop={true} size={1} />
@@ -91,7 +91,7 @@ export default function LibraryDefinition() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="rounded-lg font-semibold w-full shadow-lg bg-indigo-500 p-6 text-white mb-6 hover:bg-indigo-800 cursor-pointer transition-all scale-90 md:scale-100"
+                            className="rounded-lg font-semibold w-full shadow-lg bg-indigo-500 p-6 text-white mb-6 hover:bg-indigo-800 cursor-pointer transition-all scale-90  md:scale-100"
                             key={index}
                         >
                             {definition}
