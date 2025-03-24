@@ -64,19 +64,8 @@ export default function LibraryDefinition() {
 
     return (
         <div className="flex flex-col justify-center items-center h-screen w-full bg-gray-800 shadow-md">
-            <div className="hidden sm:block w-60 h-60 absolute top-16 md:left-195 lg:left-240 cursor-pointer">
-                <Suspense fallback={<p className="text-white">Loading animation...</p>}>
-                    <Lottie
-                        onComplete={() => {
-                            notebookRef.current?.goToAndPlay(45, true);
-                        }}
-                        lottieRef={notebookRef}
-                        animationData={Notebook}
-                        loop={false}
-                    />
-                </Suspense>
-            </div>
-            <h1 className="font-extrabold text-4xl text-white mb-4 mt-16">{word?.toUpperCase()}</h1>
+            
+            <h1 className="font-extrabold text-4xl text-white mb-8 mt-16">{word?.toUpperCase()}</h1>
 
             {/*{error && <p className="text-red-500 mb-4">{error}</p>}  Error message */}
 
