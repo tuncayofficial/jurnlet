@@ -169,11 +169,8 @@ const ProfileView: React.FC = () => {
   <h2 className="text-lg font-semibold">Password</h2>
 
   <div className="flex justify-between mt-2">
-    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-900 cursor-pointer duration-200">
-      Change Password
-    </button>
     <button className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
-      Save Changes
+      Add friend
     </button>
   </div>
 </div>

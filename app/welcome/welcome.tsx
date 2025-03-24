@@ -12,6 +12,7 @@ import { useAuth } from "~/contexts/auth/auth";
 import { doSignInWithGoogle, doSignOut } from "~/firebase/auth/authFunctions";
 import { motion } from "framer-motion"
 import { Navigate, useNavigate } from "react-router";
+import Arrow_Bottom from "../assets/lottie/Arrow Bottom.json"
 
 
 const Lottie = lazy(() => import("lottie-react"));
@@ -50,12 +51,12 @@ export function Welcome() {
 
   return (
     <div className="flex flex-col justify-center items-center h-full w-full">
-        { /** Intro */ }
-        <section className="min-h-screen w-full bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex flex-col items-center shadow-lg justify-center relative overflow-hidden md:rounded-b-full">
+        { /** Intro bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 */ }
+        <section className="min-h-screen w-full flex flex-col bg-gray-900 items-center shadow-lg justify-center relative overflow-hidden md:rounded-b-full">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-300 opacity-20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 opacity-20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-0 -left-25 w-96 h-96 bg-indigo-300 opacity-20 rounded-full blur-3xl "></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 opacity-20 rounded-full blur-3xl "></div>
       </div>
 
       {/* Main Content */}
@@ -69,8 +70,8 @@ export function Welcome() {
           />
         </div>
 
-        {/* Tagline */}
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">
+        {/* Tagline bg-gradient-to-r from-indigo-600 to-purple-600 */}
+        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text  mb-6">
         <motion.div 
           className=""
           variants={parentVariants}
@@ -80,19 +81,19 @@ export function Welcome() {
 
             <motion.span onClick = {()=>{
               navigate("/library/discipline")
-            }} variants={childVariants} className="mr-2 cursor-pointer hover:animate-pulse hover:text-purple-600" >
+            }} variants={childVariants} className="mr-2 text-white cursor-pointer hover:animate-pulse hover:text-indigo-500" >
               Discipline 
             </motion.span>
             
             <motion.span onClick = {()=>{
               navigate("/library/immerse")
-            }} variants={childVariants} className="mx-2 cursor-pointer hover:animate-pulse hover:text-purple-600" >
+            }} variants={childVariants} className="mx-2 text-white cursor-pointer hover:animate-pulse hover:text-indigo-500" >
               immerse
             </motion.span>
 
             <motion.span variants={childVariants} onClick = {()=>{
               navigate("/library/communicate")
-            }} className="ml-2 cursor-pointer hover:animate-pulse hover:text-purple-600" >
+            }} className="ml-2 text-white cursor-pointer hover:animate-pulse hover:text-indigo-600" >
             communicate
             </motion.span>
 
@@ -100,10 +101,10 @@ export function Welcome() {
 
         </h1>
 
-        {/* Call to Action Button */}
+        {/* Call to Action Button bg-gradient-to-r from-indigo-600 to-purple-600 */}
         <a
           href="/signup"
-          className="inline-block mt-2 scale-110 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 animate-fade-in"
+          className="inline-block mt-2 scale-110 bg-indigo-500 text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 animate-fade-in"
         >
           Get Started
         </a>
@@ -131,7 +132,7 @@ export function Welcome() {
           </div>
       </Suspense>
 
-      <div className="hidden md:block w-120 h-25 absolute p-6 bg-indigo-700 rounded-r-full left-0 top-99 opacity-90"></div>
+      <div className="hidden md:block w-120 h-25 absolute p-6 bg-gradient-to-br from-purple-500 via-indigo-500 to-purple-600 rounded-r-full left-0 top-99 shadow-lg"></div>
     </section>
     <section>
       <div className="flex flex-col h-screen md:flex-row justify-between items-center transform-flat">
@@ -154,11 +155,11 @@ export function Welcome() {
                           after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-indigo-500 
                           after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">See library</button>
         </div>  
-        <div className="hidden md:block w-205 h-80 absolute m-4 p-6 bg-indigo-700 rounded-l-full right-0 -bottom-190"></div>
+        <div className="hidden md:block w-205 h-80 absolute m-4 p-6 bg-indigo-700 rounded-l-full right-0 -bottom-190 shadow-lg"></div>
         <div className="flex flex-col justify-center items-start  ">
-            <div className="hidden md:block w-50 h-30  absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-120"></div>
-            <div className="hidden md:block w-80 h-30 absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-170"></div>
-            <div className="hidden md:block w-110 h-30 absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-220"></div>
+            <div className="hidden md:block w-50 h-30  absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-120 shadow-lg"></div>
+            <div className="hidden md:block w-80 h-30 absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-170 shadow-lg"></div>
+            <div className="hidden md:block w-110 h-30 absolute p-6 bg-indigo-700 rounded-r-full left-0 -bottom-220 shadow-lg"></div>
         </div>
         <Suspense fallback={<p className="text-gray-600 text-lg"></p>}>
           <div className="w-80 h-80 m-auto md:absolute md:top-283 md:right-20">
@@ -169,8 +170,19 @@ export function Welcome() {
             />
           </div>
         </Suspense>
+
+        <Suspense fallback={<p className="text-gray-600 text-lg"></p>}>
+          <div className="hidden m-auto md:block md:absolute md:-bottom-200 md:left-[13%] md:w-80 md:h-80 z-10 rotate-180">
+            <Lottie 
+              animationData={Arrow_Bottom} 
+              loop={false} 
+              className="drop-shadow-xl hover:animate-pulse"
+              style={{ width : "250px", height : "250px" }}  
+            />
+          </div>
+      </Suspense>
       </div>
-    </section>
+    </section>  
 
         { /** Cards 
         <section className="cards">
