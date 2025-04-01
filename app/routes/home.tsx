@@ -1,7 +1,6 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-
+import MainPage from "~/welcome/welcome";
 
 export default function Home() {
-  return <Welcome />;
+  return <MainPage />;
 }

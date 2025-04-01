@@ -80,17 +80,17 @@ export default function LibraryVisual() {
 
     return (
         <div className="flex flex-col justify-center items-center h-screen bg-white">
-            <div className="hidden sm:block w-60 h-60 cursor-pointer sm:right-130 top-14 absolute">
+            <div className="hidden sm:block w-60 h-60 cursor-pointer items-start">
                 <Suspense fallback={<p className="text-white">Loading animation...</p>}>
                     <Lottie
-                        onComplete={() => {
-                            notebookRef.current?.goToAndPlay(45, true);
-                        }}
+                         onComplete={() => {
+                         notebookRef.current?.goToAndPlay(45, true);
+                         }}
                         lottieRef={notebookRef}
                         animationData={Notebook}
                         loop={false}
                     />
-                </Suspense>
+               </Suspense>
             </div>
             <div className="relative w-[300px] h-[300px] flex justify-center items-center">
                 <div className={`w-32 h-32 p-4 -mb-4 ${definitions.length > 0 ? "bg-indigo-500" : "bg-red-500"} rounded-full flex justify-center items-center text-white font-bold shadow-lg`}>

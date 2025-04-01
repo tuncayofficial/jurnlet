@@ -158,7 +158,7 @@ const AccountSettings: React.FC = () => {
 </div>
 
       </div>
-      <div className='hidden md:flex absolute bottom-10 flex-row w-200 h-20 bg-gray-800 justify-between items-center rounded-lg'>
+      <div className='hidden md:flex absolute bottom-10 mt-10 flex-row w-200 h-20 bg-gray-800 justify-between items-center rounded-lg'>
         <div className='flex flex-row items-center justify-center'>
         <IoMdAlert className='ml-4' fontSize="1.5em"/>
         <span className='px-4 py-2 text-lg'>You have made some changes in your profile!</span>
