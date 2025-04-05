@@ -74,16 +74,16 @@ function Header() {
         </div>
         <ul className="text-lg md:text-lg lg:text-xl flex items-center ml-3">
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
-            <Link to="">JurnLet</Link>
+            <Link to="/">JurnLet</Link>
           </li>
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
-            <Link to="">Boards</Link>
+            <Link to="/boards">Boards</Link>
           </li>
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="/library/hello">Library</Link>
           </li>
           <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
-            <Link to="">Quizzes</Link>
+            <Link to="/quiz">Quizzes</Link>
           </li>
         </ul>
         <div className="hidden md:flex md:mx-auto items-center">

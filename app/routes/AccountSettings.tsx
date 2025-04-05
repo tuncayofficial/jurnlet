@@ -9,6 +9,9 @@ import { FaFeatherAlt } from "react-icons/fa";
 import { useAuth } from '~/contexts/auth/auth';
 import { ppid } from 'process';
 import { Navigate } from "react-router-dom";
+import { MdEdit } from "react-icons/md";
+import { IoMdAlert } from "react-icons/io";
+
 
 
 const AccountSettings: React.FC = () => {
@@ -17,8 +20,8 @@ const AccountSettings: React.FC = () => {
   const { currentUser, userLoggedIn, loading } = authContext ?? {};
 
   return userLoggedIn ? (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center md:p-4">
+      <div className="w-full h-screen md:h-full max-w-md bg-gray-800 md:rounded-lg shadow-lg md:p-8 p-6 items-center">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-xl font-semibold curp">My Account</h1>
@@ -36,7 +39,7 @@ const AccountSettings: React.FC = () => {
             
           </div>
           <div className="ml-4">
-            <h2 className="text-lg font-semibold mb-1">{currentUser?.displayName}</h2>
+            <h2 className="text-lg md:text-xl font-semibold mb-1">{currentUser?.displayName}</h2>
             <div className="flex space-x-2 ">
               
               <div className="relative group flex items-center">
@@ -93,7 +96,7 @@ const AccountSettings: React.FC = () => {
               </div>
             </div>
           </div>
-          <button className="ml-auto mb-6 bg-indigo-500 text-white px-2 py-1.5 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
+          <button className="hidden md:block ml-auto mb-6 bg-indigo-500 text-white px-2 py-1.5 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
             Edit Profile
           </button>
         </div>
@@ -144,13 +147,26 @@ const AccountSettings: React.FC = () => {
     <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-900 cursor-pointer duration-200">
       Change Password
     </button>
-    <button className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
+    <button className="hidden bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
       Save Changes
     </button>
   </div>
+  <div className='edit-button block md:hidden absolute bottom-20 right-0 p-4 mr-4 rounded-full bg-indigo-500 text-lg shadow-lg'>
+        <MdEdit color='white' fontSize="1.5em"/>
+  </div>
+ 
 </div>
 
       </div>
+      <div className='hidden md:flex absolute bottom-10 mt-10 flex-row w-200 h-20 bg-gray-800 justify-between items-center rounded-lg'>
+        <div className='flex flex-row items-center justify-center'>
+        <IoMdAlert className='ml-4' fontSize="1.5em"/>
+        <span className='px-4 py-2 text-lg'>You have made some changes in your profile!</span>
+        </div>
+        <button className="bg-green-700 text-white px-4 py-2 m-6 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
+            Save Changes
+        </button>
+       </div>
     </div>
   ) : <Navigate to="/signup" />
 };
