@@ -2,7 +2,7 @@ import React, {lazy} from 'react';
 import Logo from "../assets/mainpagelogo.png"
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { IoLogoAppleAppstore } from "react-icons/io5";
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 
 
 
@@ -24,9 +24,11 @@ const MainPage: React.FC = () => {
           The modern platform revolutionizing language learning with interactive tools and community.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-in delay-400">
+          <Link to = "/signup">
           <button className="px-8 py-3 cursor-pointer bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-800 hover:scale-105 transition duration-300">
             Start Learning
           </button>
+          </Link>
           <button className="px-8 py-3 bg-yellow-600  cursor-pointer  font-semibold rounded-full  hover:scale-105 transition duration-300 hover:bg-yellow-800">
             Join Us
           </button>
@@ -40,7 +42,7 @@ const MainPage: React.FC = () => {
         <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 mb-10 animate-slide-up">
           What Makes Us  <span className='text-indigo-500'> Special</span>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto cursor-pointer">
           {[
             {
               title: "Interactive Lessons",
@@ -77,7 +79,7 @@ const MainPage: React.FC = () => {
         <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 mb-6 animate-slide-up mt-12 ">
         <span className='text-indigo-500'>Fun</span> Fact:
         </h2>
-        <h3 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-800 mb-3 animate-slide-up">
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-3 animate-slide-up">
         Messi can't speak in English because he hasn't discovered <span className='text-indigo-500'>JurnLet</span> yet!
         </h3>
         

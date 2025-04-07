@@ -8,7 +8,7 @@ import { LuHandHeart } from "react-icons/lu";
 import { FaFeatherAlt } from "react-icons/fa";
 import { useAuth } from '~/contexts/auth/auth';
 import { ppid } from 'process';
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { IoMdAlert } from "react-icons/io";
 
@@ -145,7 +145,7 @@ const AccountSettings: React.FC = () => {
 
   <div className="flex justify-between mt-2">
     <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-900 cursor-pointer duration-200">
-      Change Password
+      <Link to="/forgot-password">Change Password</Link>
     </button>
     <button className="hidden bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
       Save Changes

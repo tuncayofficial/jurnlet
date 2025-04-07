@@ -59,7 +59,7 @@ export default function App() {
         </div>
         <Outlet />
       </div>
-      </AuthProvider>
+    </AuthProvider>
   );
 }
 
