@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import { Analytics } from "@vercel/analytics/react"
+
 import { AuthProvider } from "./contexts/auth/auth";
 
 import Header from "./components/navbar/NavBar_main";
