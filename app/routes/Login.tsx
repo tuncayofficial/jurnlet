@@ -57,8 +57,27 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-900 px-4">
+      {/* Floating Shapes */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute w-24 h-24 bg-indigo-500/20 rounded-full animate-[float_6s_ease-in-out_infinite] top-10 left-10 blur-xl"
+          style={{ animationDelay: "0s" }}
+        ></div>
+        <div
+          className="absolute w-32 h-16 bg-blue-500/20 rounded-lg animate-[float_8s_ease-in-out_infinite] bottom-20 right-20 blur-xl"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute w-16 h-16 bg-purple-500/20 rounded-full animate-[float_7s_ease-in-out_infinite] top-1/3 right-1/4 blur-xl"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute w-20 h-28 bg-indigo-600/20 rounded-lg animate-[float_9s_ease-in-out_infinite] bottom-1/4 left-1/4 blur-xl"
+          style={{ animationDelay: "3s" }}
+        ></div>
+      </div>
       {/* Container */}
-      <div className="w-full max-w-md rounded-2xl bg-gray-800 p-4 shadow-xl relative mt-20 scale-98">
+      <div className="w-full max-w-md rounded-2xl bg-gray-800 p-4 shadow-xl relative md:mt-20 scale-98">
       
         {/* Return Home Arrow - Now at the absolute top of the page */}
         <a href="/" className="absolute top-6 left-6 flex items-center text-gray-400 hover:text-white transition">
@@ -80,7 +99,7 @@ export default function Login() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full rounded-lg border border-gray-600 bg-gray-700 p-3 pl-10 text-white outline-none focus:border-blue-500"
+              className="w-full rounded-lg border border-gray-600 bg-gray-700 p-3 pl-10 text-white outline-none focus:border-blue-500 transition-all duration-300"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -95,7 +114,7 @@ export default function Login() {
             <input
               type="password"
               placeholder="Enter your password"
-              className="w-full rounded-lg border border-gray-600 bg-gray-700 p-3 pl-10 text-white outline-none focus:border-blue-500"
+              className="w-full rounded-lg border border-gray-600 bg-gray-700 p-3 pl-10 text-white outline-none focus:border-blue-500 transition-all duration-300"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

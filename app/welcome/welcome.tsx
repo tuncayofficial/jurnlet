@@ -2,7 +2,7 @@ import React, {lazy} from 'react';
 import Logo from "../assets/mainpagelogo.png"
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { IoLogoAppleAppstore } from "react-icons/io5";
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 
 
 
@@ -12,7 +12,7 @@ const MainPage: React.FC = () => {
   return (
     <main className="w-full min-h-screen bg-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center text-center py-30 px-4 sm:px-6 lg:px-8 ">
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center py-30 px-4 sm:px-6 lg:px-8 ">
         <img src={Logo} alt="" className='w-40 h-40 rounded-xl  mt-2' />
         <div className="absolute inset-0 -z-10 opacity-20 animate-pulse">
           <div className="w-full h-full bg-gradient-to-r from-indigo-400 to-purple-400 blur-3xl" />
@@ -24,10 +24,12 @@ const MainPage: React.FC = () => {
           The modern platform revolutionizing language learning with interactive tools and community.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-in delay-400">
-          <button className="px-8 py-3 cursor-pointer bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-800 hover:scale-105 transition duration-300">
+          <Link to = "/signup">
+          <button className="px-8 py-3 cursor-pointer md:text-xl bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-800 hover:scale-105 transition duration-300">
             Start Learning
           </button>
-          <button className="px-8 py-3 bg-yellow-600  cursor-pointer  font-semibold rounded-full  hover:scale-105 transition duration-300 hover:bg-yellow-800">
+          </Link>
+          <button className="px-8 py-3 bg-yellow-600 md:text-xl cursor-pointer  font-semibold rounded-full  hover:scale-105 transition duration-300 hover:bg-yellow-800">
             Join Us
           </button>
         </div>
@@ -36,52 +38,52 @@ const MainPage: React.FC = () => {
       
 
       {/* Features Section */}
-      <section className="py-18 px-4 sm:px-6 lg:px-8 bg-white relative">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 mb-10 animate-slide-up">
-          What Makes Us  <span className='text-indigo-500'> Special</span>
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {[
-            {
-              title: "Interactive Lessons",
-              desc: "Learn through immersive, fun experiences with us.",
-              icon: "📚",
-            },
-            {
-              title: "Expanded Dictionary",
-              desc: "Master words by using our library which includes OxFord, Cambridge etc.",
-              icon: "🧠",
-            },
-            {
-              title: "Supportive Events",
-              desc: "Enhance your learning with our events, badges and competitions.",
-              icon: "🌍",
-            },
-            {
-              title: "Real-Time Progress",
-              desc: "Track your learning process with our analytical system",
-              icon: "📊",
-            },
-          ].map((feature, index) => (
-            <div
-              key={index}
-              className="p-6 bg-gray-800 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 text-center animate-fade-in hover:bg-gray-900"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <span className="text-4xl">{feature.icon}</span>
-              <h3 className="mt-4 text-xl font-semibold text-white">{feature.title}</h3>
-              <p className="mt-2 text-gray-400">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 mb-6 animate-slide-up mt-12 ">
-        <span className='text-indigo-500'>Fun</span> Fact:
-        </h2>
-        <h3 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-800 mb-3 animate-slide-up">
-        Messi can't speak in English because he hasn't discovered <span className='text-indigo-500'>JurnLet</span> yet!
-        </h3>
-        
-      </section>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 relative items-center justify-center">
+  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center text-gray-900 mb-12 animate-slide-up tracking-tight">
+    What Makes Us <span className="text-indigo-600 bg-indigo-100/50 px-3 py-1 rounded-lg">Special</span>
+  </h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+    {[
+      {
+        title: "Interactive Lessons",
+        desc: "Learn through immersive, fun experiences with us.",
+        icon: "📚",
+      },
+      {
+        title: "Expanded Dictionary",
+        desc: "Master words by using our library which includes Oxford, Cambridge, and more.",
+        icon: "🧠",
+      },
+      {
+        title: "Supportive Events",
+        desc: "Enhance your learning with our events, badges, and competitions.",
+        icon: "🌍",
+      },
+      {
+        title: "Real-Time Progress",
+        desc: "Track your learning process with our analytical system.",
+        icon: "📊",
+      },
+    ].map((feature, index) => (
+      <div
+        key={index}
+        className="p-8 bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 cursor-pointer transition-all duration-400 text-center animate-fade-in bg-gradient-to-br from-gray-800 to-gray-900 hover:from-indigo-900 hover:to-gray-900"
+        style={{ animationDelay: `${index * 150}ms` }}
+      >
+        <span className="text-5xl drop-shadow-md">{feature.icon}</span>
+        <h3 className="mt-5 text-xl font-bold text-white tracking-wide">{feature.title}</h3>
+        <p className="mt-3 text-gray-300 leading-relaxed">{feature.desc}</p>
+      </div>
+    ))}
+  </div>
+  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-10 animate-slide-up mt-16 tracking-tight">
+    Explore more about <span className="text-indigo-600 bg-indigo-100/50 px-3 py-1 rounded-lg">JurnLet</span>
+  </h2>
+
+  <button className="block text-xl cursor-pointer mx-auto px-10 py-4 bg-indigo-600 text-white font-semibold rounded-full shadow-2xl hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-200/50">
+    Explore
+  </button>
+</section>
       
 
       {/* Stats Section */}
