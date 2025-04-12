@@ -1,5 +1,5 @@
 import React from 'react';
-import PP from "../assets/JURNLET LOGOO.jpg"
+import PP from "../assets/J.png"
 import { PiStudent } from "react-icons/pi";
 import { PiChalkboardTeacher } from "react-icons/pi";
 import { MdOutlineStarPurple500 } from "react-icons/md";
