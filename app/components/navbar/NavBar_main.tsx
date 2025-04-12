@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "../../assets/JURNLET LOGOO.jpg";
+import PP from "../../assets/J.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBell } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
@@ -143,7 +144,7 @@ function Header() {
                   {userLoggedIn ? (
                     <img
                       className="rounded-full w-11 h-11 border-2 border-white"
-                      src={currentUser?.photoURL ?? ProfilePic}
+                      src={currentUser?.photoURL ?? PP}
                       alt="Profile"
                     />
                   ) : ""}

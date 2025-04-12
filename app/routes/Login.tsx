@@ -161,8 +161,8 @@ export default function Login() {
        whileHover={{ scale: 1.1 }}
        whileTap={{ scale: 0.95 }}
        onHoverStart={() => console.log('hover started!')}
-       className={`flex flex-row justify-center items-center m-8 bg-green-500 p-4 rounded-lg absolute right-5 top-20`}>
-       <span className="mx-2 text-xl"><FaCheck /></span> <span className="mx-2 font-bold">Successfully created account!</span>
+       className={`flex flex-row w-auto justify-center items-center m-8 bg-green-500 p-4 rounded-lg absolute top-10 left-1/2 translate-x-[-50%] md:right-5 md:top-20 md:left-auto md:translate-x-0 z-20`}>
+       <span className="mx-2 text-xl cursor-pointer"><FaCheck /></span> <span className="mx-2 font-bold">Successfully logged in!</span>
       </motion.div> : ""
       }
       { error ?
@@ -172,7 +172,7 @@ export default function Login() {
        whileHover={{ scale: 1.1 }}
        whileTap={{ scale: 0.95 }}
        onHoverStart={() => console.log('hover started!')}
-       className={`flex flex-row justify-center items-center m-8 bg-red-500 p-4 rounded-lg absolute right-5 top-20`}>
+       className={`flex flex-row justify-center items-center m-8 bg-red-500 p-4 rounded-lg absolute top-10 left-1/2 translate-x-[-50%] md:right-5 md:top-20 md:left-auto md:translate-x-0 z-20`}>
        <span className="mx-2 text-xl"><ImCross /></span> <span className="mx-2 font-bold">{errorMessage}</span>
       </motion.div> : ""
       }
