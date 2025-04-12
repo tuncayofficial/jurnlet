@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150?text=JurnLet+Logo" alt="JurnLet Logo" width="150" style="border-radius: 50%;" />
+  <img src="app/assets/J.png" alt="JurnLet Logo" width="150" style="border-radius: 50%;" />
   <h1>JurnLet</h1>
   <p>
     A vibrant language learning platform that transforms vocabulary mastery into an interactive journal experience. Built with <strong>React Router v7</strong>, <strong>TypeScript</strong>, and <strong>Tailwind CSS</strong>.
@@ -122,7 +122,6 @@ Follow these steps to set up and run JurnLet locally on your machine.
 |-----------|--------------------|--------------------|
 | ![Home](https://via.placeholder.com/300x200?text=Home+Page) | ![Lesson](https://via.placeholder.com/300x200?text=Lesson) | ![Dashboard](https://via.placeholder.com/300x200?text=Dashboard) |
 
-*Note*: Replace placeholder images with actual screenshots by uploading to `public/screenshots/`.
 
 ---
 
