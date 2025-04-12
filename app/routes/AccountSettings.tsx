@@ -157,8 +157,8 @@ const AccountSettings: React.FC = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-gray-400 text-sm">PHONE NUMBER</p>
-              <p className="text-white">
-                6663629 
+              <p className="text-white bg-red-500 rounded-lg px-2 py-2 font-semibold my-2">
+                No numbers were added.
               </p>
             </div>
             

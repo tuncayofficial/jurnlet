@@ -7,7 +7,7 @@ import { LuHandHeart } from "react-icons/lu";
 const EditProfile: React.FC = () => {
   const [username, setUsername] = useState('abdullahtnz');
   const [email, setEmail] = useState('dazbix@gmail.com');
-  const [phone, setPhone] = useState('6663629');
+  const [phone, setPhone] = useState('No number were added.');
   const [profileImage, setProfileImage] = useState(PP); // state to manage profile image
 
   // Function to handle profile image change (for demonstration purposes)
