@@ -69,20 +69,20 @@ function Header() {
   return (
     <header className="bg-gray-800 fixed top-0 w-full md:block hidden h-20 shadow-md items-center justify-between z-20">
       <nav className="flex justify-between items-center p-2">
-        <div>
-          <img className="h-15 inline pl-6" src={Logo} alt="Jurnlet Logo" />
-        </div>
+      <div>
+        <img className="h-15 inline pl-6" src={Logo} alt="Jurnlet Logo" />
+      </div>
         <ul className="text-lg md:text-lg lg:text-xl flex items-center ml-3">
-          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
+          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-600 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="/">JurnLet</Link>
           </li>
-          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
+          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-600 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="/boards">Boards</Link>
           </li>
-          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
+          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-600 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="/library/hello">Library</Link>
           </li>
-          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-500 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
+          <li className="hover:text-white duration-400 mx-4 hover:bg-indigo-600 text-white text-center px-3 py-1.5 rounded-xl hover:cursor-pointer">
             <Link to="/quiz">Quizzes</Link>
           </li>
         </ul>
@@ -110,7 +110,7 @@ function Header() {
               onClick={onGoogleSignIn}
               className={`${
                 userLoggedIn ? "" : "hidden"
-              } text-white bg-indigo-500 mx-6 text-center px-3 py-2 rounded-xl hover:bg-indigo-800 transition-all duration-300 hover:text-white flex items-center gap-2 cursor-pointer`}
+              } text-white bg-indigo-600 mx-6 text-center px-3 py-2 rounded-xl hover:bg-indigo-800 transition-all duration-300 hover:text-white flex items-center gap-2 cursor-pointer`}
             >
               <FaPlus />
               <strong>New Article</strong>
@@ -123,8 +123,8 @@ function Header() {
           </li>
           { userLoggedIn ? "" : (
           <li className="flex flex-row justify-center items-center">
-            <Link to="/login"><button className="px-4 py-2 mx-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Login</button></Link>
-            <Link to="/signup"><button className="px-4 py-2 ml-2 bg-indigo-500 rounded-lg shadow-md cursor-pointer hover:bg-indigo-800 transitiona-ll duration-200">Sign up</button></Link>
+            <Link to="/login"><button className="px-4 py-2 mx-2 bg-indigo-600 rounded-lg shadow-md cursor-pointer hover:bg-indigo-700 transition-all duration-200">Login</button></Link>
+            <Link to="/signup"><button className="px-4 py-2 ml-2 bg-green-600 rounded-lg shadow-md cursor-pointer hover:bg-green-700 transitiona-ll duration-200">Sign up</button></Link>
           </li>
           )
           }

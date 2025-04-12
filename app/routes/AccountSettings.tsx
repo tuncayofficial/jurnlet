@@ -11,6 +11,7 @@ import { ppid } from 'process';
 import { Link, Navigate } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { IoMdAlert } from "react-icons/io";
+import { doSignOut } from '~/firebase/auth/authFunctions';
 
 
 
@@ -19,8 +20,35 @@ const AccountSettings: React.FC = () => {
   const authContext = useAuth();
   const { currentUser, userLoggedIn, loading } = authContext ?? {};
 
+  const handleSignOut = async() =>{
+    try {
+        await doSignOut()
+    } catch {
+      throw new Error("Unable to sign out.")
+    }
+  }
+
   return userLoggedIn ? (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center md:p-4">
+      {/* Floating Shapes */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute w-24 h-24 bg-indigo-500/20 rounded-full animate-[float_6s_ease-in-out_infinite] top-10 left-10 blur-xl"
+          style={{ animationDelay: "0s" }}
+        ></div>
+        <div
+          className="absolute w-32 h-16 bg-blue-500/20 rounded-lg animate-[float_8s_ease-in-out_infinite] bottom-20 right-20 blur-xl"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute w-16 h-16 bg-purple-500/20 rounded-full animate-[float_7s_ease-in-out_infinite] top-1/3 right-1/4 blur-xl"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute w-20 h-28 bg-indigo-600/20 rounded-lg animate-[float_9s_ease-in-out_infinite] bottom-1/4 left-1/4 blur-xl"
+          style={{ animationDelay: "3s" }}
+        ></div>
+      </div>
       <div className="w-full h-screen md:h-full max-w-md bg-gray-800 md:rounded-lg shadow-lg md:p-8 p-6 items-center">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
@@ -96,7 +124,7 @@ const AccountSettings: React.FC = () => {
               </div>
             </div>
           </div>
-          <button className="hidden md:block ml-auto mb-6 bg-indigo-500 text-white px-2 py-1.5 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
+          <button className="hidden md:block ml-auto mb-6 bg-indigo-500 font-semibold text-white px-2 py-2 rounded-lg hover:bg-indigo-900 duration-200 cursor-pointer">
             Edit Profile
           </button>
         </div>
@@ -144,8 +172,11 @@ const AccountSettings: React.FC = () => {
   <h2 className="text-lg font-semibold">Password</h2>
 
   <div className="flex justify-between mt-2">
-    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-900 cursor-pointer duration-200">
+    <button className="bg-indigo-500 font-semibold text-white px-4 py-2 rounded-lg hover:bg-indigo-900 cursor-pointer duration-200">
       <Link to="/forgot-password">Change Password</Link>
+    </button>
+    <button onClick={()=> handleSignOut()} className="bg-red-500 font-semibold text-white px-6 py-2 rounded-lg hover:bg-red-900 cursor-pointer duration-200">
+      Sign out
     </button>
     <button className="hidden bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-900 cursor-pointer duration-200">
       Save Changes
@@ -158,7 +189,7 @@ const AccountSettings: React.FC = () => {
 </div>
 
       </div>
-      <div className='hidden md:flex absolute bottom-10 mt-10 flex-row w-200 h-20 bg-gray-800 justify-between items-center rounded-lg'>
+      <div className='hidden absolute bottom-10 mt-10 flex-row w-200 h-20 bg-gray-800 justify-between items-center rounded-lg'>
         <div className='flex flex-row items-center justify-center'>
         <IoMdAlert className='ml-4' fontSize="1.5em"/>
         <span className='px-4 py-2 text-lg'>You have made some changes in your profile!</span>
